@@ -1,0 +1,14 @@
+# This file is used to ignore files which are generated
+# ----------------------------------------------------------------------------
+
+# Binaries
+# --------
+*.dll
+*.exe
+
+#VS
+#-----
+
+*.vcxproj.filters
+*.vcxproj.user
+*.sln
