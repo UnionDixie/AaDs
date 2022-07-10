@@ -9,8 +9,8 @@ public:
 	~App() = default;
 	void run();
 private:
-	Window m_window1;
-	Window m_window2;
+	//Window m_window1;
+	//Window m_window2;
 	//Window m_window3;
 	//Window m_window4;
 	Window m_window5;

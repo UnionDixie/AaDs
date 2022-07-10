@@ -8,6 +8,8 @@ VideoWriter::VideoWriter(const std::string &name, int w, int h) : m_w(w), m_h(h)
 		30.f,
 		cvSize(w, h));
 
+	//cvSetCaptureProperty(m_writer, 2, 100.f);
+
 	m_logpolarFrame = cvCreateImage(
 		cvSize(m_w, m_h),
 		IPL_DEPTH_8U,
@@ -31,7 +33,8 @@ void VideoWriter::add(IplImage* frame)
 	//		frame->height / 2),
 	//	40,
 	//	CV_INTER_LINEAR + CV_WARP_FILL_OUTLIERS);
-	//cv2.cvtColor(imgname, cv2.COLOR_GRAY2BGR)
+	
+	//cv.cvtColor(frame, cv2.COLOR_GRAY2BGR)
 
 	cvWriteFrame(m_writer, frame);
 }

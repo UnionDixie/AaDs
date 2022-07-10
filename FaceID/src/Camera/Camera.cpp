@@ -17,7 +17,7 @@ Camera::Camera(int camInd)
     int numDevices = m_vi.listDevices();
     m_vi.setIdealFramerate(deviceId, 30);
     m_vi.setupDevice(deviceId, 1280, 960, VI_COMPOSITE);
-    m_vi.showSettingsWindow(deviceId);  
+    //m_vi.showSettingsWindow(deviceId);  
 
     m_frame = cvCreateImage(
         cvSize(m_vi.getWidth(deviceId), m_vi.getHeight(deviceId)),

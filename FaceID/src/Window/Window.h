@@ -7,6 +7,7 @@
 #include "../VideoCapture/VideoCapture.h"
 #include "../Slider/Slider.h"
 #include "../Camera/Camera.h"
+#include "../Mouse/Mouse.h"
 
 class Window
 {
@@ -23,6 +24,10 @@ public:
 		std::function<IplImage*()> nextFrame,
 		std::function<void(IplImage*)> callback);
 
+	void draw();
+	//cvMoveWindow cvDestroyAllWindows
+
 private:
 	const std::string m_name = "Window";
+	
 };

@@ -1,5 +1,5 @@
 #pragma once
-
+#include <string>
 #include <vector>
 #include <OpenCV/cv/cv.h>
 #include <OpenCV/otherlibs/highgui/highgui.h>
@@ -29,7 +29,10 @@ public:
 	//	CvMat* m_arr;
 	//	const int m_row;
 	//};
-
+	
+	Matrix2d(CvMat* mat) : m_mat(*mat) 
+	{
+	}
 	Matrix2d(
 		const std::vector<Scalar> &data,
 		int nRows, 
@@ -51,6 +54,16 @@ public:
 	Scalar get(const int i, const int j)
 	{
 		return CV_MAT_ELEM(m_mat, float, i, j);
+	}
+
+	void save(const std::string& name)
+	{
+		cvSave(name.c_str(), &m_mat);
+	}
+
+	static Matrix2d<Scalar> load(const std::string& name)
+	{
+		return Matrix2d<Scalar>(cvLoad(name.c_str()));
 	}
 
 private:

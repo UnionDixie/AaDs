@@ -166,6 +166,7 @@ copy /Y "$(SolutionDir)Data" "$(TargetDir)Data"</Command>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Mouse\Mouse.cpp" />
     <ClCompile Include="src\Matrix2d\Matrix2d.cpp" />
     <ClCompile Include="src\App\App.cpp" />
     <ClCompile Include="src\Camera\Camera.cpp" />
@@ -177,6 +178,7 @@ copy /Y "$(SolutionDir)Data" "$(TargetDir)Data"</Command>
     <ClCompile Include="src\Window\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Mouse\Mouse.h" />
     <ClInclude Include="src\Matrix2d\Matrix2d.h" />
     <ClInclude Include="src\Primitive\Primitive.h" />
     <ClInclude Include="src\App\App.h" />
