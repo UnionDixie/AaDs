@@ -31,40 +31,42 @@ void Window::draw(IplImage* image)
 void Window::draw(VideoCapture& video)
 {
 	Slider slider("Bar", m_name, &video);
-	IplImage* frame = nullptr;
-	int speed = 33;
-	while (true) {
-		frame = video.getNextFrame();
-		if (frame == nullptr)
-			break;
+	auto nextFrame = [&]() {
+		return video.getNextFrame();
+	};
+	auto callback = [&](IplImage* currFrame) {
 		slider.next();
-		draw(frame);
-		char keyCode = cvWaitKey(speed);
-		if (keyCode == 27)
-			break;
-		if (keyCode == 119)
-			speed-=5;
-		if (keyCode == 115)
-			speed+=25;
-		std::cout << speed << "\n";
-	}
+	};
+	drawLoop(nextFrame, callback);
 }
 
 void Window::draw(Camera& camera)
 {
-	IplImage* frame = nullptr;
-	const int speed = 33;
 	const auto [w, h] = camera.size();
 	VideoWriter write("3.avi", w, h);
+	auto nextFrame = [&]() {
+		return camera.getFrame();
+	};
+	auto callback = [&](IplImage* currFrame) {
+		write.add(currFrame);
+	};
+	drawLoop(nextFrame, callback);
+}
+
+void Window::drawLoop(
+	std::function<IplImage* ()> nextFrame,
+	std::function<void(IplImage*)> callback)
+{
+	IplImage* frame = nullptr;
+	int speed = 33;
 	while (true) {
-		frame = camera.getFrame();
+		frame = nextFrame();
 		if (frame == nullptr)
 			break;
-		write.add(frame);
 		draw(frame);
+		callback(frame);
 		char keyCode = cvWaitKey(speed);
 		if (keyCode == 27)
 			break;
 	}
-	int x = 5;
 }
