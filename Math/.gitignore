@@ -6,6 +6,12 @@
 *.dll
 *.exe
 
+#Folders
+#-------
+/.vs/
+/Debug/
+/Release/
+
 #VS
 #-----
 
@@ -13,3 +19,5 @@
 *.vcxproj.user
 *.sln
 
+/vs/
+/x64/

@@ -12,4 +12,6 @@
 *.vcxproj.filters
 *.vcxproj.user
 *.sln
-
+/.vs/
+/bin/
+/build/
