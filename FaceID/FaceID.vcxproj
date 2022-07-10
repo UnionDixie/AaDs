@@ -106,7 +106,7 @@
     </Link>
     <PostBuildEvent>
       <Command>copy /Y "$(SolutionDir)external\bin" "$(TargetDir)"
-copy /Y "$(SolutionDir)Data" "$(TargetDir)"</Command>
+copy /Y "$(SolutionDir)Data" "$(TargetDir)Data"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -134,7 +134,7 @@ copy /Y "$(SolutionDir)Data" "$(TargetDir)"</Command>
     </Link>
     <PostBuildEvent>
       <Command>copy /Y "$(SolutionDir)external\bin" "$(TargetDir)"
-copy /Y "$(SolutionDir)Data" "$(TargetDir)"</Command>
+copy /Y "$(SolutionDir)Data" "$(TargetDir)Data"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -166,6 +166,7 @@ copy /Y "$(SolutionDir)Data" "$(TargetDir)"</Command>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Matrix2d\Matrix2d.cpp" />
     <ClCompile Include="src\App\App.cpp" />
     <ClCompile Include="src\Camera\Camera.cpp" />
     <ClCompile Include="src\Image\Image.cpp" />
@@ -176,9 +177,12 @@ copy /Y "$(SolutionDir)Data" "$(TargetDir)"</Command>
     <ClCompile Include="src\Window\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Matrix2d\Matrix2d.h" />
+    <ClInclude Include="src\Primitive\Primitive.h" />
     <ClInclude Include="src\App\App.h" />
     <ClInclude Include="src\Camera\Camera.h" />
     <ClInclude Include="src\Image\Image.h" />
+    <ClInclude Include="src\Settings\Setting.h" />
     <ClInclude Include="src\Slider\Slider.h" />
     <ClInclude Include="src\VideoCapture\VideoCapture.h" />
     <ClInclude Include="src\VideoWriter\VideoWriter.h" />

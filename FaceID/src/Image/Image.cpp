@@ -81,3 +81,30 @@ Image* Image::toGray()
 
 	return new Image(out);
 }
+
+void Image::addScalar(CvRect rect, const float scalar)
+{
+	setRoi(rect);
+	cvAddS(m_img.get(), cvScalar(scalar), m_img.get());
+	unsetRoi();
+}
+
+void Image::setRoi(CvRect rect)
+{
+	cvSetImageROI(m_img.get(), rect);
+}
+
+void Image::unsetRoi()
+{
+	cvResetImageROI(m_img.get());
+}
+
+void Image::alphaMixie(
+	Image& src1,
+	Image& src2,
+	float beta,
+	Image& dst, 
+	float gamma)
+{
+	cvAddWeighted(src1.get(), beta, src2.get(), 1 - beta, gamma, dst.get());
+}
